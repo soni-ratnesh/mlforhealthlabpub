@@ -106,6 +106,7 @@ def preprocess(
         df[feat] = df[feat].apply(lambda x: df[feat].mode()[0] if x in [8, 9] else x)
 
     for feat in other_list:
+        df[feat] = df[feat].astype(float)
         df.loc[df[feat] == 99, feat] = df.loc[df[feat] != 99, feat].mean()
 
     df_features = df[con_list + bin_list]
